@@ -1,4 +1,4 @@
-class mon::base {
+class mon::base($hostgroups={}) {
   include concat::setup
   concat {'/etc/mon/mon.cf':
     owner => root,
@@ -13,5 +13,10 @@ class mon::base {
     target  => '/etc/mon/mon.cf',
     content => template('mon/header.erb'),
     order   => 01
+  }
+  concat::fragment {'moncf_hostgroups':
+    target  => '/etc/mon/mon.cf',
+    content => template('mon/hostgroups.erb'),
+    order   => 10
   }
 }
