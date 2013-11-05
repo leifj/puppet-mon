@@ -1,0 +1,9 @@
+watch <%= @groupname %>
+    service <%= @service %>
+       description <%= @name %>
+       interval <%= @interval %>
+       monitor <%= @monitor %>
+       period
+          numalerts 10
+          alert mail.alert <%= @mail %>
+          upalert mail.alert <%= @mail %>
