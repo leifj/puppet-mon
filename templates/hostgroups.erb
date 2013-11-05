@@ -1,0 +1,3 @@
+<% @hostgroups.keys.sort.each do |name| %>
+hostgroup <%= name %> <% @hostgroups[name].sort.each do |member| %><%= member %> <% end %>
+<% end %>
