@@ -7,7 +7,7 @@ class mon::base {
   }
   service {'mon':
     ensure  => running,
-    require => Package['pound']
+    require => Package['mon']
   }
   concat::fragment {'moncf_header':
     target  => '/etc/mon/mon.cf',
