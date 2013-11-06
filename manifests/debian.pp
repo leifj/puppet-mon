@@ -23,8 +23,8 @@ class mon::debian inherits mon::base {
      mode    => '0755',
      source  => 'puppet:///modules/mon/dns.monitor'
   }
-  if ! defined(Package['opensaml-tools']) {
-     package {'opensaml-tools': ensure => installed}
+  if ! defined(Package['opensaml2-tools']) {
+     package {'opensaml2-tools': ensure => installed}
    }
    file {'/usr/lib/mon/mon.d/samlmd.monitor':
      ensure  => present,
