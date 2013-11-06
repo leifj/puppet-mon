@@ -20,6 +20,7 @@ if [ $? -ne 0 ]; then
    echo
    cat $ERR
    rm -f $ERR $TMPF
+   exit 1
 fi
 
 rm -f $ERR $TMPF
