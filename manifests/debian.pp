@@ -13,6 +13,7 @@ class mon::debian inherits mon::base {
   }
   file {'/usr/lib/mon/alert.d/pushover.alert':
      ensure  => present,
+     mode    => '0755',
      source  => 'puppet:///modules/mon/pushover.alert'
   }
 }
