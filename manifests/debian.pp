@@ -1,7 +1,11 @@
 class mon::debian inherits mon::base {
   package {'mon': ensure => installed }
-  package {'python-pip': ensure => installed }
-  include python
+  class { 'python':
+    version    => 'system',
+    dev        => true,
+    virtualenv => true,
+    gunicorn   => false,
+  }
   python::pip {'python-pushover': ensure => present}
   Service['mon'] {
     pattern => '/usr/sbin/mon',
