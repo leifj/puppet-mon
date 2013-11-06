@@ -6,5 +6,6 @@ watch <%= @name %>
        period
           numalerts 10
           alert mail.alert <%= @mail %>
+          alert pushover.alert
           upalert mail.alert <%= @mail %>
-
+	  alert pushover.alert
