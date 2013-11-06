@@ -31,7 +31,7 @@ def main():
          opt_u = True
       elif '-h' in o:
          opt_h = a
-      elif '-t': in o:
+      elif '-t' in o:
          opt_t = a
       elif '-l' in o:
          opt_l = a 
