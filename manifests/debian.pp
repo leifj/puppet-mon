@@ -1,5 +1,6 @@
 class mon::debian inherits mon::base {
   package {'mon': ensure => installed }
+  package {'libconvert-ber-perl': ensure => installed }
   class { 'python':
     version    => 'system',
     dev        => true,
@@ -21,5 +22,13 @@ class mon::debian inherits mon::base {
      ensure  => present,
      mode    => '0755',
      source  => 'puppet:///modules/mon/dns.monitor'
+  }
+  if ! defined(Package['opensaml-tools']) {
+     package {'opensaml-tools': ensure => installed}
+   }
+   file {'/usr/lib/mon/mon.d/samlmd.monitor':
+     ensure  => present,
+     mode    => '0755',
+     source  => 'puppet:///modules/mon/samlmd.monitor'
   }
 }
