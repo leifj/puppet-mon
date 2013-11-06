@@ -4,6 +4,7 @@ import sys
 import getopt
 import pushover
 import yaml
+import os
 
 def main():
 
@@ -47,7 +48,7 @@ def main():
       alert = "Cleared"
 
    pushover.init(cfg['token'])
-   client = Client(cfg['user'])
+   client = pushover.Client(cfg['user'])
    client.send_message(lines[0],title="%s %s/%s" % (alert,opt_g,opt_s))
 
 if __name__ == '__main__':
