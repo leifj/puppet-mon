@@ -16,6 +16,26 @@ def main():
       print(err)
       sys.exit()
 
+   opt_g = None
+   opt_s = None
+   opt_u = False
+   opt_h = None
+   opt_l = None
+   opt_t = None
+   for o,a in opts:
+      if '-g' in o:
+         opt_g = a
+      elif '-s' in o:
+         opt_s = a
+      elif '-u' in o:
+         opt_u = True
+      elif '-h' in o:
+         opt_h = a
+      elif '-t': in o:
+         opt_t = a
+      elif '-l' in o:
+         opt_l = a 
+
    lines = sys.stdin.readlines()
 
    cfg = dict()
@@ -23,9 +43,12 @@ def main():
       cfg.update(yaml.load(fd)) 
 
    alert = "ALERT"
-   if '-u' in opts:
-      alert = "ALERT CLEARED"
+   if opt_u:
+      alert = "Cleared"
 
    pushover.init(cfg['token'])
    client = Client(cfg['user'])
-   client.send_message(lines[0],title="%s %s/%s" % (alert,opts['-g'],opts['-s']))
+   client.send_message(lines[0],title="%s %s/%s" % (alert,opt_g,opt_s))
+
+if __name__ == '__main__':
+   main()
