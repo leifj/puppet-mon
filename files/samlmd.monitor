@@ -1,0 +1,25 @@
+#!/bin/sh
+
+URI=$1
+CERT=$2
+TMPF=`mktemp`
+ERR=`mktemp`
+
+wget -nv -O$TMPF "$URI" > $ERR 2>&1
+if [ $? -ne 0 ]; then
+   echo "SAML metadata fetch $URI failed"
+   echo
+   cat $ERR
+   rm -f $ERR $TMPF      
+   exit 1
+fi
+
+samlsign -f $TMPF -c $CERT > $ERR 2>&1
+if [ $? -ne 0 ]; then
+   echo "SAML verify $URI failed"
+   echo
+   cat $ERR
+   rm -f $ERR $TMPF
+fi
+
+rm -f $ERR $TMPF
