@@ -17,4 +17,10 @@ class mon::debian inherits mon::base {
      mode    => '0755',
      source  => 'puppet:///modules/mon/pushover.alert'
   }
+  }
+  file {'/usr/lib/mon/mon.d/dns.monitor':
+     ensure  => present,
+     mode    => '0755',
+     source  => 'puppet:///modules/mon/dns.monitor'
+  }
 }
