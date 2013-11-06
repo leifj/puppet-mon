@@ -6,6 +6,10 @@ import pushover
 import yaml
 
 def main():
+
+   if not os.path.exists("/etc/pushover.yaml"):
+      raise ValueError("pushover not configured - create /etc/pushover.yaml")
+
    try:
       opts,args = getopt.getopt(sys.argv[1:],"s:g:h:t:l:u")
    except getopt.GetoptError as err:
@@ -17,6 +21,7 @@ def main():
    cfg = dict()
    with open("/etc/pushover.yaml") as fd:
       cfg.update(yaml.load(fd)) 
+
    alert = "ALERT"
    if '-u' in opts:
       alert = "ALERT CLEARED"
