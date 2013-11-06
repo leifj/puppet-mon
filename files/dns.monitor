@@ -362,7 +362,7 @@ sub dns_verify {
 	    $maxkey = $key;
 	}
 
-	if (($serials{$key} < $minvalue) || (!$minkey) {
+	if (($serials{$key} < $minvalue) || !$minkey) {
 	    $minvalue = $serials{$key};
 	    $minkey = $key;
 	}
