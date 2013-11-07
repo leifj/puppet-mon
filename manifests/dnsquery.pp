@@ -1,4 +1,4 @@
-define mon::zone($name,$server,$mail) {
+define mon::dnsquery($name,$server,$mail) {
    mon::hostgroup{$name: members => $server}
    mon::watch{$name:
       service => "dnsquery",
