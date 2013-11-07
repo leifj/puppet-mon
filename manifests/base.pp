@@ -19,4 +19,5 @@ class mon::base {
     content => template('mon/hostgroups.erb'),
     order   => 10
   }
+  File['/etc/mon/mon.cf']->Service['mon']
 }
