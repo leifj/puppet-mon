@@ -11,7 +11,7 @@ class mon::debian inherits mon::base {
   python::pip {'python-requests': ensure => present}
   Service['mon'] {
     pattern => '/usr/sbin/mon',
-    restart => 'service mon restart',
+    restart => '/usr/sbin/service mon restart',
   }
   file {'/usr/lib/mon/alert.d/pushover.alert':
      ensure  => present,
