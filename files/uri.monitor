@@ -1,0 +1,16 @@
+#!/bin/sh
+
+URI=$1
+PATTERN=$2
+ERR=`mktemp`
+
+wget -S -nv -O- --no-check-certificate "$URI" 2>$ERR | grep -q "$PATTERN"
+if [ $? -ne 0 ]; then
+   echo "Failed to verify $URI ($PATTERN)"
+   echo
+   cat $ERR
+   rm -f $ERR
+   exit 1
+fi
+
+rm -f $ERR

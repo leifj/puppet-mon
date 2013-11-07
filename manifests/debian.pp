@@ -31,4 +31,9 @@ class mon::debian inherits mon::base {
      mode    => '0755',
      source  => 'puppet:///modules/mon/samlmd.monitor'
   }
+  file {'/usr/lib/mon/mon.d/uri.monitor':
+     ensure  => present,
+     mode    => '0755',
+     source  => 'puppet:///modules/mon/uri.monitor'
+  }
 }
