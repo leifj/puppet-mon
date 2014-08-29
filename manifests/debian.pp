@@ -8,7 +8,7 @@ class mon::debian inherits mon::base {
     gunicorn   => false,
   }
   python::pip {'python-pushover': ensure => present}
-  python::pip {'python-requests': ensure => present}
+  python::pip {'requests': ensure => present}
   Service['mon'] {
     pattern => '/usr/sbin/mon',
     restart => '/usr/sbin/service mon restart',
