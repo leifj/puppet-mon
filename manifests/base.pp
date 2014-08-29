@@ -1,5 +1,4 @@
 class mon::base {
-  include concat::setup
   concat {'/etc/mon/mon.cf':
     owner => root,
     group => root,
