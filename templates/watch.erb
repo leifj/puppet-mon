@@ -4,7 +4,8 @@ watch <%= @name %>
        interval <%= @interval %>
        monitor <%= @monitor %>
        period
-          numalerts 10
+          numalerts 20
+          alertafter 5 30m
           alert mail.alert <%= @mail %>
           alert pushover.alert
           upalert mail.alert <%= @mail %>
