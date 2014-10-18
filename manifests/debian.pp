@@ -12,6 +12,7 @@ class mon::debian inherits mon::base {
   Service['mon'] {
     pattern => '/usr/sbin/mon',
     restart => '/usr/sbin/service mon restart',
+    hasrestart => true
   }
   file {'/usr/lib/mon/alert.d/pushover.alert':
      ensure  => present,
