@@ -37,4 +37,9 @@ class mon::debian inherits mon::base {
      mode    => '0755',
      source  => 'puppet:///modules/mon/uri.monitor'
   }
+  file {'/usr/lib/mon/mon.d/vuri.monitor':
+     ensure  => present,
+     mode    => '0755',
+     source  => 'puppet:///modules/mon/vuri.monitor'
+  }
 }
