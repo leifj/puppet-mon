@@ -11,11 +11,14 @@ pattern = sys.argv[2]
 u = urlparse(uri)
 fails = []
 for h in sys.argv[3:]:
-   c = httplib.HTTPConnection(h,u.port,timeout=10)
-   c.request("GET",u.path,None,dict(Host=u.hostname))
-   r = c.getresponse()
-   if r.status != 200 or pattern not in r.read():
-      fails.append("%s (%s - %s)" % (h,r.status,r.reason))
+   try:
+      c = httplib.HTTPConnection(h,u.port,timeout=10)
+      c.request("GET",u.path,None,dict(Host=u.hostname))
+      r = c.getresponse()
+      if r.status != 200 or pattern not in r.read():
+         fails.append("%s (%s - %s)" % (h,r.status,r.reason))
+   except Exception, ex:
+      fails.append("%s (%s)" % (h, ex))
   
 if fails:
    print "Failed to verify %s (%s) on %s" % (uri,pattern,",".join(fails)) 
