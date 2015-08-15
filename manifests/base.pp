@@ -1,4 +1,6 @@
+
 class mon::base {
+  $hostgroups = $mon::hostgroups
   concat {'/etc/mon/mon.cf':
     owner => root,
     group => root,
