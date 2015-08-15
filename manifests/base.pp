@@ -13,12 +13,12 @@ class mon::base {
   concat::fragment {'moncf_header':
     target  => '/etc/mon/mon.cf',
     content => template('mon/header.erb'),
-    order   => 01
+    order   => '01'
   }
   concat::fragment {'moncf_hostgroups':
     target  => '/etc/mon/mon.cf',
     content => template('mon/hostgroups.erb'),
-    order   => 10
+    order   => '10'
   }
   File['/etc/mon/mon.cf']->Service['mon']
 }
